@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
-
 const CreateArea = (props) => {
 
     const [note, setNote] = useState({
@@ -15,10 +14,10 @@ const CreateArea = (props) => {
 
         setNote(prevNote => {
             return {
-                prevNote,
+                ...prevNote,
                 [name]: value
             }
-        })
+          })
     }
 
     const functionSubmit = (event) => {
@@ -42,7 +41,7 @@ const CreateArea = (props) => {
             onChange={handleChange}
         />
         <textarea 
-            name='Content' 
+            name='content' 
             rows='3' 
             placeholder='take a note...' 
             value={note.content}
@@ -52,8 +51,6 @@ const CreateArea = (props) => {
             <AddIcon />
         </Fab>
       </form>
-
-
     </div>
   )
 }
