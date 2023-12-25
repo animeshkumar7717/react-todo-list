@@ -3,11 +3,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const Note = (props) => {
+    const handleClick = () => {
+        props.onDelete(props.id)
+    }
   return (
-    <div>
+    <div className='note'>
       <h1>{props.title}</h1>
       <p>{props.content}</p>
-      <DeleteIcon />
+      <button onClick={handleClick}>
+        <DeleteIcon />
+      </button>
     </div>
   )
 }
