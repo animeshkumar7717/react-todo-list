@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { Fab } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 
-const CreateArea = () => {
+
+const CreateArea = (props) => {
 
     const [note, setNote] = useState({
         title: '',
@@ -8,7 +11,6 @@ const CreateArea = () => {
     });
 
     const handleChange = (event) => {
-        console.log('event', event.target);
         const { name, value } = event.target;
 
         setNote(prevNote => {
@@ -17,6 +19,16 @@ const CreateArea = () => {
                 [name]: value
             }
         })
+    }
+
+    const functionSubmit = (event) => {
+      props.onAdd(note);
+      setNote({
+        title: '',
+        content: ''
+      })
+
+      event.preventDefault();
     }
 
   return (
@@ -36,6 +48,9 @@ const CreateArea = () => {
             value={note.content}
             onChange={handleChange}
         />
+        <Fab onClick={functionSubmit}>
+            <AddIcon />
+        </Fab>
       </form>
 
 
